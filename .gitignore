@@ -218,3 +218,31 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# Dataset files
+data/raw/
+
+# Python
+__pycache__/
+*.pyc
+
+# Environment variables and secrets
+.env
+
+
+# Project-specific exclusions
+archive.zip
+*.log
+*.db
+
+# Raw dataset
+data/raw/
+
+# Processed data: ignore everything by default
+data/processed/*
+
+# Keep evaluation results
+!data/processed/evaluation/
+data/processed/evaluation/*
+!data/processed/evaluation/policy_generation_evaluation.csv

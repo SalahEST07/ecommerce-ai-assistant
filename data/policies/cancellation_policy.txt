@@ -1,0 +1,25 @@
+SIMULATED E-COMMERCE POLICY — ORDER CANCELLATION
+
+Document type: Cancellation policy
+Policy ID: POL-003
+Version: 1.0
+
+1. Cancellation before dispatch
+Customers may request cancellation before the order is dispatched.
+If approved, the customer receives a full refund.
+
+2. Orders already dispatched
+Orders that have already been dispatched cannot be canceled directly.
+Customers may request a return after delivery, subject to the
+returns and refunds policy.
+
+3. Cancellation request
+Customers must contact support and provide their order ID.
+
+4. Cancellation confirmation
+A cancellation is considered successful only after the customer
+receives confirmation from support.
+
+5. Refund timing
+Approved cancellation refunds are processed within 7 business days
+using the original payment method whenever possible.

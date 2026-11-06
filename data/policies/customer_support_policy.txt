@@ -1,0 +1,28 @@
+SIMULATED E-COMMERCE POLICY — CUSTOMER SUPPORT
+
+Document type: Customer support policy
+Policy ID: POL-005
+Version: 1.0
+
+1. Contact method
+Customers may contact support through the store's support form
+or support email.
+
+2. Required information
+Customers should provide their order ID and a clear description
+of their issue.
+
+3. Response time
+Support aims to respond within 2 business days.
+
+4. Order information
+Customers should use their order ID when asking about delivery,
+cancellation, returns, or refunds.
+
+5. Privacy
+Customer information is used only to handle the request and
+should not be shared publicly.
+
+6. Escalation
+If an issue remains unresolved after the initial response,
+the customer may request escalation to a support supervisor.

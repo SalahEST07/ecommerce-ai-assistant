@@ -1,0 +1,28 @@
+SIMULATED E-COMMERCE POLICY — PAYMENT
+
+Document type: Payment policy
+Policy ID: POL-004
+Version: 1.0
+
+1. Accepted payment methods
+The store accepts credit cards, debit cards, and bank transfer.
+
+2. Payment confirmation
+An order is considered confirmed after the payment provider
+confirms successful payment.
+
+3. Failed payments
+If payment fails, the customer should verify their payment details
+or contact their payment provider.
+
+4. Duplicate payments
+Customers who believe they were charged more than once should
+contact support and provide their order ID and payment details.
+
+5. Payment security
+Customers should never share their passwords or full payment
+credentials with customer support.
+
+6. Refunds
+Eligible refunds are issued according to the returns and refunds
+or cancellation policy.

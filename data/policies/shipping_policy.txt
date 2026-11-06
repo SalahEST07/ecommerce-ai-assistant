@@ -1,0 +1,27 @@
+SIMULATED E-COMMERCE POLICY — SHIPPING AND DELIVERY
+
+Document type: Shipping policy
+Policy ID: POL-001
+Version: 1.0
+
+1. Processing time
+Orders are prepared within 2 business days after payment confirmation.
+
+2. Estimated delivery
+Standard delivery takes 5 to 10 business days after dispatch.
+These estimates are illustrative and may vary depending on the destination.
+
+3. Shipping fees
+Shipping fees are calculated according to the delivery address and order weight.
+The shipping fee is displayed before the customer confirms the order.
+
+4. Tracking
+Customers receive a tracking number after their order is dispatched.
+Tracking information may take up to 24 hours to become available.
+
+5. Delayed deliveries
+If an order has not arrived within the estimated delivery period,
+the customer should contact customer support with their order ID.
+
+6. Business days
+Business days are Monday through Friday, excluding public holidays.

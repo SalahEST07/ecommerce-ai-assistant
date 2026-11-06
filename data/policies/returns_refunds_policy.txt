@@ -1,0 +1,32 @@
+SIMULATED E-COMMERCE POLICY — RETURNS AND REFUNDS
+
+Document type: Returns and refunds policy
+Policy ID: POL-002
+Version: 1.0
+
+1. Return eligibility
+Customers may request a return within 30 calendar days after delivery.
+
+2. Product condition
+Returned products must be unused and include their original packaging
+and accessories, except when the product is defective or damaged.
+
+3. Return request
+Customers must contact support and provide their order ID,
+the product they want to return, and the reason for the return.
+
+4. Refund processing
+After the returned product is received and inspected,
+the refund is processed within 7 business days.
+
+5. Refund method
+Refunds are issued using the original payment method whenever possible.
+
+6. Return shipping
+For defective or incorrectly delivered products, the store covers
+the return shipping cost. For other eligible returns, the customer
+is responsible for return shipping.
+
+7. Non-refundable situations
+Products that are used, damaged by the customer, or missing required
+accessories may be rejected for return.
