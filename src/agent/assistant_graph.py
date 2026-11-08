@@ -32,7 +32,7 @@ class AssistantState(TypedDict):
 async def call_mcp_tool(tool_name, arguments, mcp_url=MCP_URL):
 
     async with streamable_http_client(mcp_url) as (
-        read_stream, write_stream, get_session_id
+        read_stream, write_stream
     ): 
 
         async with ClientSession(read_stream, write_stream) as session:
