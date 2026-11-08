@@ -5,7 +5,7 @@ from typing import TypedDict, Optional
 from langgraph.graph import StateGraph, START, END
 
 from mcp import ClientSession
-from mcp.client.streamable_http import streamablehttp_client
+from mcp.client.streamable_http import streamable_http_client
 
 from src.agent.router import route_question
 from src.sql.sql_generator import generate_sql
@@ -30,9 +30,9 @@ class AssistantState(TypedDict):
 
 async def call_mcp_tool(tool_name, arguments, mcp_url=MCP_URL):
 
-    async with streamablehttp_client(mcp_url) as (
-        read_stream, write_stream, _
-    ):
+    async with streamable_http_client(mcp_url) as (
+        read_stream, write_stream
+    ): 
 
         async with ClientSession(read_stream, write_stream) as session:
 
@@ -43,7 +43,7 @@ async def call_mcp_tool(tool_name, arguments, mcp_url=MCP_URL):
                 arguments=arguments
             )
 
-            if result.isError:
+            if result.is_error:
                 raise RuntimeError(
                     f"MCP tool {tool_name} returned an error."
                 )

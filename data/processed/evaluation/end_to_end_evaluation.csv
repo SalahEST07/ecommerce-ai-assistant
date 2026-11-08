@@ -1,0 +1,285 @@
+question_id,question,expected_route,actual_route,route_correct,expected_source,source_correct,answer_present,generated_sql,sql_execution_success,sql_result_correct,actual_sql_result,answer,error
+POLICY_01,How many business days are needed to prepare an order?,POLICY,POLICY,True,shipping_policy.txt,True,True,,,,,7,
+POLICY_02,What is the estimated standard delivery time?,POLICY,POLICY,True,shipping_policy.txt,True,True,,,,,The estimated standard delivery time is 5 to 10 business days after dispatch.,
+POLICY_03,How can customers track their orders?,POLICY,POLICY,True,shipping_policy.txt,True,True,,,,,Customers can track their orders by receiving a tracking number after their order is dispatched. The tracking information may take up to 24 hours to become available.,
+POLICY_04,What should a customer do if a package is delayed?,POLICY,POLICY,True,shipping_policy.txt,True,True,,,,,The customer should contact customer support with their order ID.,
+POLICY_05,How many days does a customer have to request a return?,POLICY,POLICY,True,returns_refunds_policy.txt,True,True,,,,,30 days,
+POLICY_06,What condition must a returned product be in?,POLICY,POLICY,True,returns_refunds_policy.txt,True,True,,,,,The returned product must be unused and include its original packaging.,
+POLICY_07,How long does refund processing take?,POLICY,POLICY,True,returns_refunds_policy.txt,True,True,,,,,Within 7 business days.,
+POLICY_08,Who pays return shipping for a defective product?,POLICY,POLICY,True,returns_refunds_policy.txt,True,True,,,,,The store covers the return shipping cost for defective products.,
+POLICY_09,Can customers cancel an order before dispatch?,POLICY,POLICY,True,cancellation_policy.txt,True,True,,,,,"Customers may request cancellation before the order is dispatched. Cancellation requires approval. If approved, the customer receives a full refund. Orders already dispatched cannot be canceled directly. Customers may request a return after delivery, subject to the returns policy. Customers must contact support and provide their order ID.",
+POLICY_10,Can an order be canceled after it has been dispatched?,POLICY,POLICY,True,cancellation_policy.txt,True,True,,,,,"Customers may request cancellation before the order is dispatched. Cancellation requires approval. If approved, the customer receives a full refund. Orders already dispatched cannot be canceled directly. Customers may request a return after delivery, subject to the returns policy. Customers must contact support and provide their order ID. Approved cancellation refunds are processed within 7 business days, using the original payment method whenever possible.",
+POLICY_11,What information is required to request cancellation?,POLICY,POLICY,True,cancellation_policy.txt,True,True,,,,,"Customers may request cancellation before the order is dispatched. Cancellation requires approval. If approved, the customer receives a full refund. Orders already dispatched cannot be canceled directly. Customers may request a return after delivery, subject to the returns policy. Customers must contact support and provide their order ID. Approved cancellation refunds are processed within 7 business days, using the original payment method whenever possible.",
+POLICY_12,When is an order cancellation considered successful?,POLICY,POLICY,True,cancellation_policy.txt,True,True,,,,,"Customers may request cancellation before the order is dispatched. Cancellation requires approval. If approved, the customer receives a full refund. Orders already dispatched cannot be canceled directly. Customers may request a return after delivery, subject to the returns policy. Customers must contact support and provide their order ID. Approved cancellation refunds are processed within 7 business days, using the original payment method whenever possible.",
+POLICY_13,Which payment methods does the store accept?,POLICY,POLICY,True,payment_policy.txt,True,True,,,,,"The store accepts credit cards, debit cards, and bank transfer.",
+POLICY_14,When is an order considered confirmed?,POLICY,POLICY,True,payment_policy.txt,True,True,,,,,An order is considered confirmed after the payment provider confirms successful payment.,
+POLICY_15,What should customers do when a payment fails?,POLICY,POLICY,True,payment_policy.txt,True,True,,,,,Customers should verify their payment details or contact their payment provider.,
+POLICY_16,What should customers do if they are charged twice?,POLICY,POLICY,True,payment_policy.txt,True,True,,,,,"If a customer believes they were charged more than once, they should contact support and provide their order ID and payment details.",
+POLICY_17,How long does customer support take to respond?,POLICY,POLICY,True,customer_support_policy.txt,True,True,,,,,Customer support takes 2 business days to respond.,
+POLICY_18,What information should customers provide to support?,POLICY,POLICY,True,customer_support_policy.txt,True,True,,,,,Customers should provide their order ID and a clear description of their issue.,
+POLICY_19,How can customers contact the support team?,POLICY,POLICY,True,customer_support_policy.txt,True,True,,,,,Customers may contact support through the store's support form or support email.,
+POLICY_20,How can an unresolved customer issue be escalated?,POLICY,POLICY,True,customer_support_policy.txt,True,True,,,,,An unresolved customer issue should be escalated to a support supervisor.,
+SQL_01,How many orders are in the database?,SQL,SQL,True,Olist SQLite database,True,True,SELECT COUNT(*) AS total_orders FROM orders;,True,True,"[{""total_orders"": 99441}]","Here are the database results:
+1. total_orders: 99,441",
+SQL_02,How many orders have been delivered?,SQL,SQL,True,Olist SQLite database,True,True,SELECT COUNT(*) AS delivered_orders FROM orders WHERE order_status = 'delivered';,True,True,"[{""delivered_orders"": 96478}]","Here are the database results:
+1. delivered_orders: 96,478",
+SQL_03,How many orders have been canceled?,SQL,SQL,True,Olist SQLite database,True,True,"SELECT COUNT(*) AS canceled_orders
+FROM orders
+WHERE order_status = 'canceled';",True,True,"[{""canceled_orders"": 625}]","Here are the database results:
+1. canceled_orders: 625",
+SQL_04,How many customers are in the database?,SQL,SQL,True,Olist SQLite database,True,True,SELECT COUNT(*) AS total_customers FROM customers;,True,True,"[{""total_customers"": 99441}]","Here are the database results:
+1. total_customers: 99,441",
+SQL_05,How many distinct cities do customers come from?,SQL,SQL,True,Olist SQLite database,True,True,SELECT COUNT(DISTINCT customer_city) AS num_cities FROM customers,True,True,"[{""num_cities"": 4119}]","Here are the database results:
+1. num_cities: 4,119",
+SQL_06,Which are the five cities with the most customers?,SQL,SQL,True,Olist SQLite database,True,True,"SELECT customer_city, COUNT(*) AS customer_count
+        FROM customers
+        GROUP BY customer_city
+        ORDER BY customer_count DESC
+        LIMIT 5;",True,True,"[{""customer_city"": ""sao paulo"", ""customer_count"": 15540}, {""customer_city"": ""rio de janeiro"", ""customer_count"": 6882}, {""customer_city"": ""belo horizonte"", ""customer_count"": 2773}, {""customer_city"": ""brasilia"", ""customer_count"": 2131}, {""customer_city"": ""curitiba"", ""customer_count"": 1521}]","Here are the database results:
+1. customer_city: sao paulo | customer_count: 15,540
+2. customer_city: rio de janeiro | customer_count: 6,882
+3. customer_city: belo horizonte | customer_count: 2,773
+4. customer_city: brasilia | customer_count: 2,131
+5. customer_city: curitiba | customer_count: 1,521",
+SQL_07,What are the five most popular product categories by items sold?,SQL,SQL,True,Olist SQLite database,True,True,"SELECT p.product_category_name, COUNT(*) AS items_sold
+FROM order_items oi
+JOIN products p ON oi.product_id = p.product_id
+WHERE p.product_category_name IS NOT NULL
+GROUP BY p.product_category_name
+ORDER BY items_sold DESC
+LIMIT 5;",True,True,"[{""product_category_name"": ""cama_mesa_banho"", ""items_sold"": 11115}, {""product_category_name"": ""beleza_saude"", ""items_sold"": 9670}, {""product_category_name"": ""esporte_lazer"", ""items_sold"": 8641}, {""product_category_name"": ""moveis_decoracao"", ""items_sold"": 8334}, {""product_category_name"": ""informatica_acessorios"", ""items_sold"": 7827}]","Here are the database results:
+1. product_category_name: cama_mesa_banho | items_sold: 11,115
+2. product_category_name: beleza_saude | items_sold: 9,670
+3. product_category_name: esporte_lazer | items_sold: 8,641
+4. product_category_name: moveis_decoracao | items_sold: 8,334
+5. product_category_name: informatica_acessorios | items_sold: 7,827",
+SQL_08,What is the average price of an order item?,SQL,SQL,True,Olist SQLite database,True,True,SELECT AVG(price) AS avg_price FROM order_items,True,True,"[{""avg_price"": 120.65373901464713}]","Here are the database results:
+1. avg_price: 120.65373901464713",
+SQL_09,"What is the total revenue from order items, excluding shipping?",SQL,SQL,True,Olist SQLite database,True,True,"SELECT SUM(price) AS total_revenue
+        FROM order_items;",True,True,"[{""total_revenue"": 13591643.7}]","Here are the database results:
+1. total_revenue: 13,591,643.7",
+SQL_10,What is the average freight value per order item?,SQL,SQL,True,Olist SQLite database,True,True,"SELECT AVG(freight_value) AS avg_freight_value
+FROM order_items;",True,True,"[{""avg_freight_value"": 19.990319928983578}]","Here are the database results:
+1. avg_freight_value: 19.990319928983578",
+SQL_11,How many orders are there for each order status?,SQL,SQL,True,Olist SQLite database,True,True,"SELECT order_status, COUNT(order_id) AS order_count
+FROM orders
+GROUP BY order_status;",True,True,"[{""order_status"": ""approved"", ""order_count"": 2}, {""order_status"": ""canceled"", ""order_count"": 625}, {""order_status"": ""created"", ""order_count"": 5}, {""order_status"": ""delivered"", ""order_count"": 96478}, {""order_status"": ""invoiced"", ""order_count"": 314}, {""order_status"": ""processing"", ""order_count"": 301}, {""order_status"": ""shipped"", ""order_count"": 1107}, {""order_status"": ""unavailable"", ""order_count"": 609}]","Here are the database results:
+1. order_status: approved | order_count: 2
+2. order_status: canceled | order_count: 625
+3. order_status: created | order_count: 5
+4. order_status: delivered | order_count: 96,478
+5. order_status: invoiced | order_count: 314
+6. order_status: processing | order_count: 301
+7. order_status: shipped | order_count: 1,107
+8. order_status: unavailable | order_count: 609",
+SQL_12,How many distinct orders contain at least one order item?,SQL,SQL,True,Olist SQLite database,True,True,"SELECT COUNT(DISTINCT o.order_id) AS distinct_order_ids
+FROM order_items oi
+JOIN orders o ON oi.order_id = o.order_id",True,True,"[{""distinct_order_ids"": 98666}]","Here are the database results:
+1. distinct_order_ids: 98,666",
+SQL_13,Which five Brazilian states have the most customers?,SQL,SQL,True,Olist SQLite database,True,True,"SELECT customer_state, COUNT(*) AS customer_count
+        FROM customers
+        GROUP BY customer_state
+        ORDER BY customer_count DESC
+        LIMIT 5;",True,True,"[{""customer_state"": ""SP"", ""customer_count"": 41746}, {""customer_state"": ""RJ"", ""customer_count"": 12852}, {""customer_state"": ""MG"", ""customer_count"": 11635}, {""customer_state"": ""RS"", ""customer_count"": 5466}, {""customer_state"": ""PR"", ""customer_count"": 5045}]","Here are the database results:
+1. customer_state: SP | customer_count: 41,746
+2. customer_state: RJ | customer_count: 12,852
+3. customer_state: MG | customer_count: 11,635
+4. customer_state: RS | customer_count: 5,466
+5. customer_state: PR | customer_count: 5,045",
+SQL_14,How many distinct product categories are in the products table?,SQL,SQL,True,Olist SQLite database,True,True,"SELECT COUNT(DISTINCT P.product_category_name) AS num_product_categories
+FROM products P;",True,True,"[{""num_product_categories"": 73}]","Here are the database results:
+1. num_product_categories: 73",
+SQL_15,How many items were sold in each product category?,SQL,SQL,True,Olist SQLite database,True,True,"SELECT p.product_category_name, COUNT(*) AS items_sold
+FROM order_items oi
+JOIN products p ON oi.product_id = p.product_id
+GROUP BY p.product_category_name;",True,True,"[{""product_category_name"": null, ""items_sold"": 1603}, {""product_category_name"": ""agro_industria_e_comercio"", ""items_sold"": 212}, {""product_category_name"": ""alimentos"", ""items_sold"": 510}, {""product_category_name"": ""alimentos_bebidas"", ""items_sold"": 278}, {""product_category_name"": ""artes"", ""items_sold"": 209}, {""product_category_name"": ""artes_e_artesanato"", ""items_sold"": 24}, {""product_category_name"": ""artigos_de_festas"", ""items_sold"": 43}, {""product_category_name"": ""artigos_de_natal"", ""items_sold"": 153}, {""product_category_name"": ""audio"", ""items_sold"": 364}, {""product_category_name"": ""automotivo"", ""items_sold"": 4235}, {""product_category_name"": ""bebes"", ""items_sold"": 3065}, {""product_category_name"": ""bebidas"", ""items_sold"": 379}, {""product_category_name"": ""beleza_saude"", ""items_sold"": 9670}, {""product_category_name"": ""brinquedos"", ""items_sold"": 4117}, {""product_category_name"": ""cama_mesa_banho"", ""items_sold"": 11115}, {""product_category_name"": ""casa_conforto"", ""items_sold"": 434}, {""product_category_name"": ""casa_conforto_2"", ""items_sold"": 30}, {""product_category_name"": ""casa_construcao"", ""items_sold"": 604}, {""product_category_name"": ""cds_dvds_musicais"", ""items_sold"": 14}, {""product_category_name"": ""cine_foto"", ""items_sold"": 72}, {""product_category_name"": ""climatizacao"", ""items_sold"": 297}, {""product_category_name"": ""consoles_games"", ""items_sold"": 1137}, {""product_category_name"": ""construcao_ferramentas_construcao"", ""items_sold"": 929}, {""product_category_name"": ""construcao_ferramentas_ferramentas"", ""items_sold"": 103}, {""product_category_name"": ""construcao_ferramentas_iluminacao"", ""items_sold"": 304}, {""product_category_name"": ""construcao_ferramentas_jardim"", ""items_sold"": 238}, {""product_category_name"": ""construcao_ferramentas_seguranca"", ""items_sold"": 194}, {""product_category_name"": ""cool_stuff"", ""items_sold"": 3796}, {""product_category_name"": ""dvds_blu_ray"", ""items_sold"": 64}, {""product_category_name"": ""eletrodomesticos"", ""items_sold"": 771}, {""product_category_name"": ""eletrodomesticos_2"", ""items_sold"": 238}, {""product_category_name"": ""eletronicos"", ""items_sold"": 2767}, {""product_category_name"": ""eletroportateis"", ""items_sold"": 679}, {""product_category_name"": ""esporte_lazer"", ""items_sold"": 8641}, {""product_category_name"": ""fashion_bolsas_e_acessorios"", ""items_sold"": 2031}, {""product_category_name"": ""fashion_calcados"", ""items_sold"": 262}, {""product_category_name"": ""fashion_esporte"", ""items_sold"": 30}, {""product_category_name"": ""fashion_roupa_feminina"", ""items_sold"": 48}, {""product_category_name"": ""fashion_roupa_infanto_juvenil"", ""items_sold"": 8}, {""product_category_name"": ""fashion_roupa_masculina"", ""items_sold"": 132}, {""product_category_name"": ""fashion_underwear_e_moda_praia"", ""items_sold"": 131}, {""product_category_name"": ""ferramentas_jardim"", ""items_sold"": 4347}, {""product_category_name"": ""flores"", ""items_sold"": 33}, {""product_category_name"": ""fraldas_higiene"", ""items_sold"": 39}, {""product_category_name"": ""industria_comercio_e_negocios"", ""items_sold"": 268}, {""product_category_name"": ""informatica_acessorios"", ""items_sold"": 7827}, {""product_category_name"": ""instrumentos_musicais"", ""items_sold"": 680}, {""product_category_name"": ""la_cuisine"", ""items_sold"": 14}, {""product_category_name"": ""livros_importados"", ""items_sold"": 60}, {""product_category_name"": ""livros_interesse_geral"", ""items_sold"": 553}, {""product_category_name"": ""livros_tecnicos"", ""items_sold"": 267}, {""product_category_name"": ""malas_acessorios"", ""items_sold"": 1092}, {""product_category_name"": ""market_place"", ""items_sold"": 311}, {""product_category_name"": ""moveis_colchao_e_estofado"", ""items_sold"": 38}, {""product_category_name"": ""moveis_cozinha_area_de_servico_jantar_e_jardim"", ""items_sold"": 281}, {""product_category_name"": ""moveis_decoracao"", ""items_sold"": 8334}, {""product_category_name"": ""moveis_escritorio"", ""items_sold"": 1691}, {""product_category_name"": ""moveis_quarto"", ""items_sold"": 109}, {""product_category_name"": ""moveis_sala"", ""items_sold"": 503}, {""product_category_name"": ""musica"", ""items_sold"": 38}, {""product_category_name"": ""papelaria"", ""items_sold"": 2517}, {""product_category_name"": ""pc_gamer"", ""items_sold"": 9}, {""product_category_name"": ""pcs"", ""items_sold"": 203}, {""product_category_name"": ""perfumaria"", ""items_sold"": 3419}, {""product_category_name"": ""pet_shop"", ""items_sold"": 1947}, {""product_category_name"": ""portateis_casa_forno_e_cafe"", ""items_sold"": 76}, {""product_category_name"": ""portateis_cozinha_e_preparadores_de_alimentos"", ""items_sold"": 15}, {""product_category_name"": ""relogios_presentes"", ""items_sold"": 5991}, {""product_category_name"": ""seguros_e_servicos"", ""items_sold"": 2}, {""product_category_name"": ""sinalizacao_e_seguranca"", ""items_sold"": 199}, {""product_category_name"": ""tablets_impressao_imagem"", ""items_sold"": 83}, {""product_category_name"": ""telefonia"", ""items_sold"": 4545}, {""product_category_name"": ""telefonia_fixa"", ""items_sold"": 264}, {""product_category_name"": ""utilidades_domesticas"", ""items_sold"": 6964}]","Here are the database results:
+1. product_category_name: None | items_sold: 1,603
+2. product_category_name: agro_industria_e_comercio | items_sold: 212
+3. product_category_name: alimentos | items_sold: 510
+4. product_category_name: alimentos_bebidas | items_sold: 278
+5. product_category_name: artes | items_sold: 209
+6. product_category_name: artes_e_artesanato | items_sold: 24
+7. product_category_name: artigos_de_festas | items_sold: 43
+8. product_category_name: artigos_de_natal | items_sold: 153
+9. product_category_name: audio | items_sold: 364
+10. product_category_name: automotivo | items_sold: 4,235
+11. product_category_name: bebes | items_sold: 3,065
+12. product_category_name: bebidas | items_sold: 379
+13. product_category_name: beleza_saude | items_sold: 9,670
+14. product_category_name: brinquedos | items_sold: 4,117
+15. product_category_name: cama_mesa_banho | items_sold: 11,115
+16. product_category_name: casa_conforto | items_sold: 434
+17. product_category_name: casa_conforto_2 | items_sold: 30
+18. product_category_name: casa_construcao | items_sold: 604
+19. product_category_name: cds_dvds_musicais | items_sold: 14
+20. product_category_name: cine_foto | items_sold: 72
+21. product_category_name: climatizacao | items_sold: 297
+22. product_category_name: consoles_games | items_sold: 1,137
+23. product_category_name: construcao_ferramentas_construcao | items_sold: 929
+24. product_category_name: construcao_ferramentas_ferramentas | items_sold: 103
+25. product_category_name: construcao_ferramentas_iluminacao | items_sold: 304
+26. product_category_name: construcao_ferramentas_jardim | items_sold: 238
+27. product_category_name: construcao_ferramentas_seguranca | items_sold: 194
+28. product_category_name: cool_stuff | items_sold: 3,796
+29. product_category_name: dvds_blu_ray | items_sold: 64
+30. product_category_name: eletrodomesticos | items_sold: 771
+31. product_category_name: eletrodomesticos_2 | items_sold: 238
+32. product_category_name: eletronicos | items_sold: 2,767
+33. product_category_name: eletroportateis | items_sold: 679
+34. product_category_name: esporte_lazer | items_sold: 8,641
+35. product_category_name: fashion_bolsas_e_acessorios | items_sold: 2,031
+36. product_category_name: fashion_calcados | items_sold: 262
+37. product_category_name: fashion_esporte | items_sold: 30
+38. product_category_name: fashion_roupa_feminina | items_sold: 48
+39. product_category_name: fashion_roupa_infanto_juvenil | items_sold: 8
+40. product_category_name: fashion_roupa_masculina | items_sold: 132
+41. product_category_name: fashion_underwear_e_moda_praia | items_sold: 131
+42. product_category_name: ferramentas_jardim | items_sold: 4,347
+43. product_category_name: flores | items_sold: 33
+44. product_category_name: fraldas_higiene | items_sold: 39
+45. product_category_name: industria_comercio_e_negocios | items_sold: 268
+46. product_category_name: informatica_acessorios | items_sold: 7,827
+47. product_category_name: instrumentos_musicais | items_sold: 680
+48. product_category_name: la_cuisine | items_sold: 14
+49. product_category_name: livros_importados | items_sold: 60
+50. product_category_name: livros_interesse_geral | items_sold: 553
+51. product_category_name: livros_tecnicos | items_sold: 267
+52. product_category_name: malas_acessorios | items_sold: 1,092
+53. product_category_name: market_place | items_sold: 311
+54. product_category_name: moveis_colchao_e_estofado | items_sold: 38
+55. product_category_name: moveis_cozinha_area_de_servico_jantar_e_jardim | items_sold: 281
+56. product_category_name: moveis_decoracao | items_sold: 8,334
+57. product_category_name: moveis_escritorio | items_sold: 1,691
+58. product_category_name: moveis_quarto | items_sold: 109
+59. product_category_name: moveis_sala | items_sold: 503
+60. product_category_name: musica | items_sold: 38
+61. product_category_name: papelaria | items_sold: 2,517
+62. product_category_name: pc_gamer | items_sold: 9
+63. product_category_name: pcs | items_sold: 203
+64. product_category_name: perfumaria | items_sold: 3,419
+65. product_category_name: pet_shop | items_sold: 1,947
+66. product_category_name: portateis_casa_forno_e_cafe | items_sold: 76
+67. product_category_name: portateis_cozinha_e_preparadores_de_alimentos | items_sold: 15
+68. product_category_name: relogios_presentes | items_sold: 5,991
+69. product_category_name: seguros_e_servicos | items_sold: 2
+70. product_category_name: sinalizacao_e_seguranca | items_sold: 199
+71. product_category_name: tablets_impressao_imagem | items_sold: 83
+72. product_category_name: telefonia | items_sold: 4,545
+73. product_category_name: telefonia_fixa | items_sold: 264
+74. product_category_name: utilidades_domesticas | items_sold: 6,964",
+SQL_16,How many orders were placed in 2017?,SQL,SQL,True,Olist SQLite database,True,True,"SELECT COUNT(*) AS orders_2017
+        FROM orders
+        WHERE order_purchase_timestamp >= '2017-01-01'
+          AND order_purchase_timestamp < '2018-01-01';",True,True,"[{""orders_2017"": 45101}]","Here are the database results:
+1. orders_2017: 45,101",
+SQL_17,How many orders were placed in each year?,SQL,SQL,True,Olist SQLite database,True,True,"SELECT strftime('%Y', order_purchase_timestamp) AS year, COUNT(*) AS order_count
+FROM orders
+GROUP BY strftime('%Y', order_purchase_timestamp)
+ORDER BY year ASC;",True,True,"[{""year"": ""2016"", ""order_count"": 329}, {""year"": ""2017"", ""order_count"": 45101}, {""year"": ""2018"", ""order_count"": 54011}]","Here are the database results:
+1. year: 2016 | order_count: 329
+2. year: 2017 | order_count: 45,101
+3. year: 2018 | order_count: 54,011",
+SQL_18,What is the average order item price for delivered orders?,SQL,SQL,True,Olist SQLite database,True,True,"SELECT AVG(order_items.price) 
+FROM orders 
+JOIN order_items 
+ON orders.order_id = order_items.order_id 
+WHERE order_status = 'delivered';",True,True,"[{""AVG(order_items.price)"": 119.98056308247955}]","Here are the database results:
+1. AVG(order_items.price): 119.98056308247955",
+SQL_19,Which five product categories have the highest average item price?,SQL,SQL,True,Olist SQLite database,True,True,"SELECT p.product_category_name, AVG(o.price) AS avg_price
+FROM order_items o
+JOIN products p ON o.product_id = p.product_id
+GROUP BY p.product_category_name
+ORDER BY avg_price DESC
+LIMIT 5;",True,True,"[{""product_category_name"": ""pcs"", ""avg_price"": 1098.3405418719212}, {""product_category_name"": ""portateis_casa_forno_e_cafe"", ""avg_price"": 624.2856578947368}, {""product_category_name"": ""eletrodomesticos_2"", ""avg_price"": 476.1249579831933}, {""product_category_name"": ""agro_industria_e_comercio"", ""avg_price"": 342.12485849056606}, {""product_category_name"": ""instrumentos_musicais"", ""avg_price"": 281.616}]","Here are the database results:
+1. product_category_name: pcs | avg_price: 1,098.3405418719212
+2. product_category_name: portateis_casa_forno_e_cafe | avg_price: 624.2856578947368
+3. product_category_name: eletrodomesticos_2 | avg_price: 476.1249579831933
+4. product_category_name: agro_industria_e_comercio | avg_price: 342.12485849056606
+5. product_category_name: instrumentos_musicais | avg_price: 281.616",
+SQL_20,How many customers are there in Sao Paulo?,SQL,SQL,True,Olist SQLite database,True,True,"SELECT COUNT(*) AS customer_count
+        FROM customers
+        WHERE LOWER(customer_city) = 'sao paulo';",True,True,"[{""customer_count"": 15540}]","Here are the database results:
+1. customer_count: 15,540",
+HYBRID_01,"What is the cancellation policy before dispatch, and how many orders have been canceled?",HYBRID,HYBRID,True,cancellation_policy.txt,True,True,"SELECT COUNT(*) AS canceled_orders
+FROM orders
+WHERE order_status = 'canceled';",True,True,"[{""canceled_orders"": 625}]","POLICY INFORMATION:
+Customers may request cancellation before the order is dispatched. Cancellation requires approval. If approved, the customer receives a full refund. Orders already dispatched cannot be canceled directly. Customers may request a return after delivery, subject to the returns policy. Customers must contact support and provide their order ID.
+
+DATABASE INFORMATION:
+Here are the database results:
+1. canceled_orders: 625",
+HYBRID_02,"Can dispatched orders be canceled directly, and how many orders have been delivered?",HYBRID,HYBRID,True,cancellation_policy.txt,True,True,SELECT COUNT(*) AS delivered_orders FROM orders WHERE order_status = 'delivered';,True,True,"[{""delivered_orders"": 96478}]","POLICY INFORMATION:
+Customers may request cancellation before the order is dispatched. Cancellation requires approval. If approved, the customer receives a full refund. Orders already dispatched cannot be canceled directly. Customers may request a return after delivery, subject to the returns policy. Customers must contact support and provide their order ID.
+
+DATABASE INFORMATION:
+Here are the database results:
+1. delivered_orders: 96,478",
+HYBRID_03,"What is the standard delivery timeframe, and how many orders are currently shipped?",HYBRID,HYBRID,True,shipping_policy.txt,True,True,"SELECT COUNT(*) AS shipped_orders
+        FROM orders
+        WHERE order_status = 'shipped';",True,True,"[{""shipped_orders"": 1107}]","POLICY INFORMATION:
+Standard delivery takes 5 to 10 business days after dispatch.
+
+DATABASE INFORMATION:
+Here are the database results:
+1. shipped_orders: 1,107",
+HYBRID_04,"How long does order preparation take according to the shipping policy, and how many orders are processing?",HYBRID,HYBRID,True,shipping_policy.txt,True,True,"SELECT COUNT(*) AS processed_orders
+FROM orders
+WHERE order_status = 'processing';",True,True,"[{""processed_orders"": 301}]","POLICY INFORMATION:
+Orders are prepared within 2 business days after payment confirmation.
+
+DATABASE INFORMATION:
+Here are the database results:
+1. processed_orders: 301",
+HYBRID_05,"What is the return deadline after delivery, and how many orders were placed in 2017?",HYBRID,HYBRID,True,returns_refunds_policy.txt,True,True,"SELECT COUNT(*) AS orders_2017
+        FROM orders
+        WHERE order_purchase_timestamp >= '2017-01-01'
+          AND order_purchase_timestamp < '2018-01-01';",True,True,"[{""orders_2017"": 45101}]","POLICY INFORMATION:
+After delivery, customers have 30 calendar days to request a return.
+
+DATABASE INFORMATION:
+Here are the database results:
+1. orders_2017: 45,101",
+HYBRID_06,"Who pays return shipping for defective products, and how many customers are in Sao Paulo?",HYBRID,HYBRID,True,returns_refunds_policy.txt,True,True,"SELECT COUNT(*) AS customer_count
+        FROM customers
+        WHERE LOWER(customer_city) = 'sao paulo';",True,True,"[{""customer_count"": 15540}]","POLICY INFORMATION:
+The store covers return shipping for defective products.
+
+DATABASE INFORMATION:
+Here are the database results:
+1. customer_count: 15,540",
+HYBRID_07,"Which payment methods does the store accept, and how many orders have been canceled?",HYBRID,HYBRID,True,payment_policy.txt,True,True,"SELECT COUNT(*) AS canceled_orders
+FROM orders
+WHERE order_status = 'canceled';",True,True,"[{""canceled_orders"": 625}]","POLICY INFORMATION:
+credit cards, debit cards, and bank transfer
+
+DATABASE INFORMATION:
+Here are the database results:
+1. canceled_orders: 625",
+HYBRID_08,"When is an order considered confirmed according to the payment policy, and how many orders are delivered?",HYBRID,HYBRID,True,payment_policy.txt,True,True,SELECT COUNT(*) AS delivered_orders FROM orders WHERE order_status = 'delivered';,True,True,"[{""delivered_orders"": 96478}]","POLICY INFORMATION:
+An order is considered confirmed after the payment provider confirms successful payment.
+
+DATABASE INFORMATION:
+Here are the database results:
+1. delivered_orders: 96,478",
+HYBRID_09,"How quickly does customer support aim to respond, and how many customers are in Rio de Janeiro?",HYBRID,HYBRID,True,customer_support_policy.txt,True,True,"SELECT COUNT(*) AS customer_count
+        FROM customers
+        WHERE LOWER(customer_city) = 'rio de janeiro';",True,True,"[{""customer_count"": 6882}]","POLICY INFORMATION:
+Customer support aims to respond within 2 business days.
+
+DATABASE INFORMATION:
+Here are the database results:
+1. customer_count: 6,882",
+HYBRID_10,"How can unresolved customer issues be escalated, and which five cities have the most customers?",HYBRID,HYBRID,True,customer_support_policy.txt,True,True,"SELECT customer_city, COUNT(*) AS customer_count
+        FROM customers
+        GROUP BY customer_city
+        ORDER BY customer_count DESC
+        LIMIT 5;",True,True,"[{""customer_city"": ""sao paulo"", ""customer_count"": 15540}, {""customer_city"": ""rio de janeiro"", ""customer_count"": 6882}, {""customer_city"": ""belo horizonte"", ""customer_count"": 2773}, {""customer_city"": ""brasilia"", ""customer_count"": 2131}, {""customer_city"": ""curitiba"", ""customer_count"": 1521}]","POLICY INFORMATION:
+The customer's issue should be escalated to a support supervisor if it remains unresolved after the initial response.
+
+DATABASE INFORMATION:
+Here are the database results:
+1. customer_city: sao paulo | customer_count: 15,540
+2. customer_city: rio de janeiro | customer_count: 6,882
+3. customer_city: belo horizonte | customer_count: 2,773
+4. customer_city: brasilia | customer_count: 2,131
+5. customer_city: curitiba | customer_count: 1,521",
