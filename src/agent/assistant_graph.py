@@ -1,3 +1,4 @@
+import traceback
 
 import json
 from typing import TypedDict, Optional
@@ -31,7 +32,7 @@ class AssistantState(TypedDict):
 async def call_mcp_tool(tool_name, arguments, mcp_url=MCP_URL):
 
     async with streamable_http_client(mcp_url) as (
-        read_stream, write_stream
+        read_stream, write_stream, get_session_id
     ): 
 
         async with ClientSession(read_stream, write_stream) as session:
@@ -43,7 +44,7 @@ async def call_mcp_tool(tool_name, arguments, mcp_url=MCP_URL):
                 arguments=arguments
             )
 
-            if result.is_error:
+            if result.isError:
                 raise RuntimeError(
                     f"MCP tool {tool_name} returned an error."
                 )
@@ -275,7 +276,7 @@ def build_assistant_graph(
             return {
                 "answer": "Policy retrieval failed.",
                 "sources": [],
-                "error": str(error)
+                "error": traceback.format_exc()
             }
 
     # 3. SQL node
