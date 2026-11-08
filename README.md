@@ -293,3 +293,63 @@ Developed as an individual academic project for an Advanced AI Engineering cours
 
 GitHub repository:  
 https://github.com/SalahEST07/ecommerce-ai-assistant
+
+## Reproducing the data assets
+
+The SQLite database and ChromaDB vector store are generated locally and are intentionally excluded from Git because they are derived assets.
+
+### 1. Prepare the Olist dataset
+
+Download the Olist Brazilian E-Commerce Public Dataset and extract its CSV files into `data/raw/olist/`.
+
+The four required files are:
+- `olist_customers_dataset.csv`
+- `olist_orders_dataset.csv`
+- `olist_order_items_dataset.csv`
+- `olist_products_dataset.csv`
+
+The dataset is distributed under the CC BY-NC-SA 4.0 license. Refer to its original source and license when using or redistributing it.
+
+### 2. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Build the SQLite database
+
+From the project root, run:
+
+```bash
+python src/data/prepare_database.py
+```
+
+This creates `data/processed/olist.db` and validates the expected row counts and SQLite integrity.
+
+### 4. Build the policy vector store
+
+The five simulated policy documents are already included in `data/policies/`.
+
+Run:
+
+```bash
+python src/rag/build_vector_store.py
+```
+
+This creates the ChromaDB collection `ecommerce_policies_small_chunks`, using `sentence-transformers/all-MiniLM-L6-v2`.
+
+### 5. Start the application
+
+Start the MCP server:
+
+```bash
+python src/mcp/server.py
+```
+
+In a separate terminal, start Streamlit:
+
+```bash
+streamlit run app/streamlit_app.py
+```
+
+The application requires both the SQLite database and the ChromaDB collection to be available.
